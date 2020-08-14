@@ -11,12 +11,19 @@ class Lista extends StatelessWidget {
     final controller = Provider.of<Controller>(context);
 
     return Observer(builder: (BuildContext context) {
-      return ListView.builder(
-          itemCount: controller.lista.length,
-          itemBuilder: (context, index) {
-            final item = controller.lista[index];
-            return ItemCard(item: item, controller: controller);
-          });
+      if (controller.lista.length > 0) {
+        return ListView.builder(
+            itemCount: controller.lista.length,
+            itemBuilder: (context, index) {
+              final item = controller.lista[index];
+              return ItemCard(item: item, controller: controller);
+            });
+      } else {
+        return Container(
+            padding: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: Text('Nenhum registro localizado!'));
+      }
     });
   }
 }

@@ -12,6 +12,7 @@ void abrirModal(BuildContext context, Controller controller) {
       return Stack(
         children: [
           TextField(
+            autofocus: true,
             onChanged: (v) {
               txt = v;
               controller.mudaValida(txt);
